@@ -9,8 +9,8 @@ import Layout from '@/views/layout/Layout'
 /* Router Modules */
 import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
-import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
+// import tableRouter from './modules/table'
+// import nestedRouter from './modules/nested'
 
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -88,19 +88,6 @@ export const constantRouterMap = [
         meta: { title: 'documentation', icon: 'documentation', noCache: true }
       }
     ]
-  },
-  {
-    path: '/guide',
-    component: Layout,
-    redirect: '/guide/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'guide', icon: 'guide', noCache: true }
-      }
-    ]
   }
 ]
 
@@ -159,8 +146,8 @@ export const asyncRouterMap = [
   /** When your routing table is too long, you can split it into small modules**/
   componentsRouter,
   chartsRouter,
-  nestedRouter,
-  tableRouter,
+  // nestedRouter, // 路由嵌套
+  // tableRouter,
 
   {
     path: '/example',
@@ -193,20 +180,6 @@ export const asyncRouterMap = [
       }
     ]
   },
-
-  {
-    path: '/tab',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/tab/index'),
-        name: 'Tab',
-        meta: { title: 'tab', icon: 'tab' }
-      }
-    ]
-  },
-
   {
     path: '/error',
     component: Layout,
@@ -245,122 +218,24 @@ export const asyncRouterMap = [
       }
     ]
   },
-
   {
-    path: '/excel',
+    path: '/website',
     component: Layout,
-    redirect: '/excel/export-excel',
-    name: 'Excel',
-    meta: {
-      title: 'excel',
-      icon: 'excel'
-    },
+    redirect: '/addweb',
+    name: 'website',
+    meta: { title: '站点管理', icon: 'website' },
     children: [
       {
-        path: 'export-excel',
-        component: () => import('@/views/excel/exportExcel'),
-        name: 'ExportExcel',
-        meta: { title: 'exportExcel' }
+        path: 'addweb',
+        component: () => import('@/views/website/addweb'),
+        name: 'addweb',
+        meta: { title: '添加新站点', icon: 'add' }
       },
       {
-        path: 'export-selected-excel',
-        component: () => import('@/views/excel/selectExcel'),
-        name: 'SelectExcel',
-        meta: { title: 'selectExcel' }
-      },
-      {
-        path: 'upload-excel',
-        component: () => import('@/views/excel/uploadExcel'),
-        name: 'UploadExcel',
-        meta: { title: 'uploadExcel' }
-      }
-    ]
-  },
-
-  {
-    path: '/zip',
-    component: Layout,
-    redirect: '/zip/download',
-    alwaysShow: true,
-    meta: { title: 'zip', icon: 'zip' },
-    children: [
-      {
-        path: 'download',
-        component: () => import('@/views/zip/index'),
-        name: 'ExportZip',
-        meta: { title: 'exportZip' }
-      }
-    ]
-  },
-
-  {
-    path: '/pdf',
-    component: Layout,
-    redirect: '/pdf/index',
-    meta: { title: 'PDF', icon: 'pdf' },
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/pdf/index'),
-        name: 'PDF',
-        meta: { title: 'PDF' }
-      }
-    ]
-  },
-  {
-    path: '/pdf/download',
-    component: () => import('@/views/pdf/download'),
-    hidden: true
-  },
-
-  {
-    path: '/theme',
-    component: Layout,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/theme/index'),
-        name: 'Theme',
-        meta: { title: 'theme', icon: 'theme' }
-      }
-    ]
-  },
-
-  {
-    path: '/clipboard',
-    component: Layout,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/clipboard/index'),
-        name: 'ClipboardDemo',
-        meta: { title: 'clipboardDemo', icon: 'clipboard' }
-      }
-    ]
-  },
-
-  {
-    path: '/i18n',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/i18n-demo/index'),
-        name: 'I18n',
-        meta: { title: 'i18n', icon: 'international' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
-        meta: { title: 'externalLink', icon: 'link' }
+        path: 'editweb',
+        component: () => import('@/views/website/editweb'),
+        name: 'editweb',
+        meta: { title: '编辑站点', icon: 'edit' }
       }
     ]
   },
